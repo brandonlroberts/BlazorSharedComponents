@@ -1,0 +1,4 @@
+﻿oy2oksbs7crwfwjc4aaqvqilyer575zujhokwz4upe4h24
+
+dotnet nuget push C:\Programming\Personal\Blazor\BlazorSharedComponents\BlazorSharedComponents.UI\ComponentLibraryDemo\bin\Debug\ComponentLibraryDemo.1.0.6.nupkg --api-key oy2oksbs7crwfwjc4aaqvqilyer575zujhokwz4upe4h24 --source https://api.nuget.org/v3/index.json
+dotnet nuget push /Users/snapper/Programming/Blazor/BlazorSharedComponents/ComponentLibraryDemo/bin/Debug/ComponentLibraryDemo.1.0.4.nupkg --api-key oy2oksbs7crwfwjc4aaqvqilyer575zujhokwz4upe4h24 --source https://api.nuget.org/v3/index.json

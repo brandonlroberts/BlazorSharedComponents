@@ -1,0 +1,32 @@
+@inject IDialogService DialogService
+@namespace ComponentLibraryDemo
+
+<MudDialog>
+    <DialogContent>
+        <MudTextField @bind-Value="model.Value" Label="Add Name" Variant="Variant.Outlined" Margin="Margin.Dense"></MudTextField>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="OnSaveClicked">Add Value</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    private ValueViewModel model;
+    void Cancel() => MudDialog.Cancel();
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        model = new ValueViewModel();
+    }
+
+    private async Task OnSaveClicked()
+    {
+        var api = RestService.For<IValuesClient>("https://localhost:7199/api");
+        var names = await api.Get();
+        int max = names.Max(i => i.Id);
+        model.Id = max + 1; 
+        await api.Post(model);
+        MudDialog.Close(DialogResult.Ok(true));
+    }
+}
