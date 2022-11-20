@@ -10,7 +10,7 @@
         MaxWidth = MaxWidth.Medium,
         FullWidth = true
     };
-    private async Task OpenDialog(DialogOptions options)
+    private void OpenDialog(DialogOptions options)
     {
         DialogOptions closeOnEscapeKey = new DialogOptions() { CloseOnEscapeKey = true };
         DialogService.Show<AddValueDialog>("Add Value", options);
