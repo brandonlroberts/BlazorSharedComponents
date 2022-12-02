@@ -1,6 +1,6 @@
 ﻿@namespace ComponentLibraryDemo
 
-<MudTable Items="@_model" Hover="true" Breakpoint="Breakpoint.Sm">
+<MudTable Items="@_model" Hover="true" FixedHeader="true" Height="500px">
     <HeaderContent>
         <MudTh>Id</MudTh>
         <MudTh>Name</MudTh>
@@ -9,13 +9,30 @@
         <MudTd DataLabel="Id">@context.Id</MudTd>
         <MudTd DataLabel="Name">@context.Value</MudTd>
     </RowTemplate>
+    <PagerContent>
+        <MudTablePager PageSizeOptions="new int[] { 50, 100 }"/>
+    </PagerContent>
 </MudTable>
 
 @code {
+
+    [Parameter]
+    public bool ValueHasChanged { get; set; }
+
+    [Parameter]
+    public EventCallback ResetChangedValue { get; set; }
+
     List<ValueViewModel> _model = new();
-    protected async override Task OnInitializedAsync()
+
+    protected override async Task OnParametersSetAsync()
     {
+        if (ValueHasChanged)
+        {
+            StateHasChanged();
+            await ResetChangedValue.InvokeAsync();
+        }
         var api = RestService.For<IValuesClient>("https://localhost:7199/api");
         _model = await api.Get();
     }
-}   
+
+}

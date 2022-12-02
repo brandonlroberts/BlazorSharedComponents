@@ -14,7 +14,7 @@
     private ValueViewModel _model;
     void Cancel() => MudDialog.Cancel();
     [CascadingParameter] MudDialogInstance MudDialog { get; set; }
-    [Parameter] public EventCallback OnAddValueClicked { get; set; }
+    [Parameter] public EventCallback<bool> OnAddValueClicked { get; set; }
     
     protected override void OnInitialized()
     {
@@ -28,7 +28,7 @@
         int max = names.Max(i => i.Id);
         _model.Id = max + 1; 
         await api.Post(_model);
-        await OnAddValueClicked.InvokeAsync();
+        await OnAddValueClicked.InvokeAsync(true);
         MudDialog.Close(DialogResult.Ok(true));
     }
 }

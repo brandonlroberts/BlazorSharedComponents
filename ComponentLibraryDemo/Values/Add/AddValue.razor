@@ -5,7 +5,7 @@
     Add User
 </MudButton>
 @code {
-    [Parameter] public EventCallback OnAddValueClicked { get; set; }
+    [Parameter] public EventCallback<bool> OnAddValueClicked { get; set; }
     DialogOptions _maxWidth = new()
     {
         MaxWidth = MaxWidth.Medium,
