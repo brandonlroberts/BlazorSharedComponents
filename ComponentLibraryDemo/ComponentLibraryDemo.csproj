@@ -11,10 +11,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.11" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.11" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.11" PrivateAssets="all" />
-		<PackageReference Include="MudBlazor" Version="6.1.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.4" PrivateAssets="all" />
+		<PackageReference Include="MudBlazor" Version="6.0.15" />
 		<PackageReference Include="Refit" Version="6.3.2" />
 		<PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
 	</ItemGroup>
@@ -25,7 +25,7 @@
 
 	<PropertyGroup>
 		<PackageId>ComponentLibraryDemo</PackageId>
-		<Version>1.0.7</Version>
+		<Version>1.0.9</Version>
 		<Authors>Brandon</Authors>
 		<Company>Sage</Company>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>

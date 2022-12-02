@@ -1,0 +1,21 @@
+﻿@namespace ComponentLibraryDemo
+
+<MudTable Items="@_model" Hover="true" Breakpoint="Breakpoint.Sm">
+    <HeaderContent>
+        <MudTh>Id</MudTh>
+        <MudTh>Name</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="Name">@context.Value</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@code {
+    List<ValueViewModel> _model = new();
+    protected async override Task OnInitializedAsync()
+    {
+        var api = RestService.For<IValuesClient>("https://localhost:7199/api");
+        _model = await api.Get();
+    }
+}   
