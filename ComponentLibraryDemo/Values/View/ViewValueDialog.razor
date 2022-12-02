@@ -1,7 +1,7 @@
 ﻿@namespace ComponentLibraryDemo
 <MudDialog>
     <DialogContent>
-        <MudTable Items="@model" Hover="true" Breakpoint="Breakpoint.Sm">
+        <MudTable Items="@Model" Hover="true" Breakpoint="Breakpoint.Sm">
             <HeaderContent>
                 <MudTh>Id</MudTh>
                 <MudTh>Name</MudTh>
@@ -20,9 +20,7 @@
 
 @code {
     [CascadingParameter] MudDialogInstance MudDialog { get; set; }
-    [Parameter] public List<ValueViewModel> model { get; set; }
-    private int id = 0;
-    private string name = string.Empty;
+    [Parameter] public List<ValueViewModel> Model { get; set; }
     void Submit() => MudDialog.Close(DialogResult.Ok(true));
     void Cancel() => MudDialog.Cancel();
 }   

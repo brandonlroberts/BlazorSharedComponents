@@ -1,11 +1,11 @@
 ﻿@inject IDialogService DialogService
 @namespace ComponentLibraryDemo
 
-<MudButton @onclick="((e) => OpenDialog(maxWidth))" Variant="Variant.Filled" Color="Color.Primary">
-    View Values
+<MudButton @onclick="((_) => OpenDialog(_maxWidth))" Variant="Variant.Filled" Color="Color.Primary">
+    View Users
 </MudButton>
 @code {
-    DialogOptions maxWidth = new DialogOptions() 
+    DialogOptions _maxWidth = new() 
     { 
         MaxWidth = MaxWidth.Medium, 
         FullWidth = true 
@@ -15,7 +15,6 @@
         var api = RestService.For<IValuesClient>("https://localhost:7199/api");
         var model = await api.Get();
         var parameters = new DialogParameters { ["model"] = model };
-        DialogOptions closeOnEscapeKey = new DialogOptions() { CloseOnEscapeKey = true };
 
         DialogService.Show<ViewValueDialog>("Current Names", parameters, options);
     }

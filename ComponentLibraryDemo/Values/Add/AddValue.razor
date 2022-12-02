@@ -1,18 +1,21 @@
 @inject IDialogService DialogService
 @namespace ComponentLibraryDemo
 
-<MudButton @onclick="((e) => OpenDialog(maxWidth))" Variant="Variant.Filled" Color="Color.Primary">
-    Add Value
+<MudButton @onclick="(() => OpenDialog(_maxWidth))" Variant="Variant.Filled" Color="Color.Primary">
+    Add User
 </MudButton>
 @code {
-    DialogOptions maxWidth = new DialogOptions()
+    [Parameter] public EventCallback OnAddValueClicked { get; set; }
+    DialogOptions _maxWidth = new()
     {
         MaxWidth = MaxWidth.Medium,
-        FullWidth = true
+        FullWidth = true,
+        CloseOnEscapeKey = true
     };
     private void OpenDialog(DialogOptions options)
     {
-        DialogOptions closeOnEscapeKey = new DialogOptions() { CloseOnEscapeKey = true };
-        DialogService.Show<AddValueDialog>("Add Value", options);
+        var parameters = new DialogParameters { ["OnAddValueClicked"]= OnAddValueClicked };
+
+        DialogService.Show<AddValueDialog>("Add Value", parameters, options);
     }
 }
